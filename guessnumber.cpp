@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -8,8 +9,10 @@ int main()
     cout << "The objective of the game is to guess whether the next number is going to be higher or not. As simple as that." << endl;
     cout << "You have the ability to make no more than 3 mistakes before you lose, so guess wisely." << endl << endl;
     cout << "You are starting with number 5. Is the next number higher(write H) or lower(write L) ?" << endl;
-
-
+    
+    int mistakes = 0;
+    int correctGuesses;
+    int prevNum = 5, nextNum;
     char choice;
 
     do
@@ -21,7 +24,7 @@ int main()
 
         cin >> choice;
 
-        if (choice == 'H')
+        if (choice == 'H') //if guess is Higher
         {
             if (prevNum < nextNum)
             {
@@ -35,7 +38,7 @@ int main()
             }
         }
 
-        if (choice == 'L')
+        if (choice == 'L') //if guess is Lower
         {
             if (prevNum > nextNum)
             {
@@ -51,9 +54,12 @@ int main()
 
         prevNum = nextNum;
     }
+    
+    while(mistakes<3)
 
     cout << "You've made 3 mistakes ! Game is now over !" << endl;
     cout << "You had " << correctGuesses << " correct guesses before the game was over" << endl;
-
+    
+ return 0;
 
 }
